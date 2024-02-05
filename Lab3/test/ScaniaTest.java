@@ -1,11 +1,13 @@
-package Lab2.test;
+package Lab3.test;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.awt.*;
+import Lab3.main.java.*;
 public class ScaniaTest {
-    private Scania testScania;
+    private
+    Scania testScania;
 
     @BeforeEach
     public void setUp() {

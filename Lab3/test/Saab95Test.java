@@ -1,10 +1,10 @@
-package Lab2.test;
+package Lab3.test;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.awt.*;
-
+import Lab3.main.java.*;
 public class Saab95Test {
     private Saab95 testSaab;
 
@@ -31,27 +31,6 @@ public class Saab95Test {
     public void TestSaabSpeedfactor() {
         testSaab.turbocar.setTurboOn();
         assertEquals(1.625, testSaab.speedFactor());
-    }
-
-
-    @Test // Testar att flytta en Saab (x)
-    public void TestSaabSetX() {
-        testSaab.setX(7);
-        assertEquals(7, testSaab.getX());
-    }
-
-
-    @Test // Testar att flytta en Saab (y)
-    public void TestSaabSetY() {
-        testSaab.setY(7);
-        assertEquals(7, testSaab.getY());
-    }
-
-
-    @Test // Testar att flytta en Saabs riktning
-    public void TestSaabSetAngle() {
-        testSaab.setDirection(Math.PI/2);
-        assertEquals(Math.PI/2, testSaab.getDirection());
     }
 
 

@@ -1,5 +1,5 @@
-package Lab2.test;
-
+package Lab3.test;
+import Lab3.main.java.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +20,7 @@ public class CarTransporterTest {
     public void TestCarDistance() {
         Volvo240 volvo240 = new Volvo240(Color.black, 7, 6);
         newTransporter.load(volvo240);
-        assertEquals(0, newTransporter.loadable.nrOfLoadedCars());
+        assertEquals(0, newTransporter.nrOfLoadedCars());
     }
     @Test //Testar att lasta av en bil - LIFO
     public void TestLastIndexIsRemoved() {
@@ -40,20 +40,20 @@ public class CarTransporterTest {
         CarTransporter<Car> newTransporter = new CarTransporter<>(1, Color.black, 4, 5);
         newTransporter.load(saab95);
         newTransporter.load(volvo240);
-        assertEquals(1, newTransporter.loadable.nrOfLoadedCars());
+        assertEquals(1, newTransporter.nrOfLoadedCars());
     }
     @Test //Testar att det inte går att lasta när flaket används
     public void TestLoadWhenFlatbedUp() {
         newTransporter.raiseFlatbed();
         newTransporter.load(volvo240);
-        assertEquals(0, newTransporter.loadable.nrOfLoadedCars());
+        assertEquals(0, newTransporter.nrOfLoadedCars());
     }
     @Test //Testar att höja och sänka flatbed
     public void TestFlipFlatbedTwice() {
         newTransporter.raiseFlatbed();
         newTransporter.lowerFlatbed();
         newTransporter.load(volvo240);
-        assertEquals(1, newTransporter.loadable.nrOfLoadedCars());
+        assertEquals(1, newTransporter.nrOfLoadedCars());
     }
     @Test
     public void TestFlatbedState(){
@@ -68,16 +68,19 @@ public class CarTransporterTest {
         newTransporter.move();
         assertEquals(newTransporter.getX(), volvo240.getX());
     }
-    @Test //Testar att flatbed flyttas rätt
-    public void TestFlatbedMovingWithTransporter() {
+    @Test //Testar att flatbed och bilar flyttas rätt
+    public void TestCarAndFlabedMovingWithTransporter() {
+        newTransporter.load(volvo240);
         newTransporter.gas(1);
         newTransporter.move();
-        assertEquals(10.5, newTransporter.loadable.getY());
+        newTransporter.brake(1);
+        Car car = newTransporter.unload();
+        assertEquals(newTransporter.getY(), car.getY() - 2);
     }
     @Test // Testar att lasta en Scania på en CarTransporter
     public void TestLoadTruck() {
         Scania testScania = new Scania(Color.blue, 4, 5);
         newTransporter.load(testScania);
-        assertEquals(0, newTransporter.loadable.nrOfLoadedCars());
+        assertEquals(0, newTransporter.nrOfLoadedCars());
     }
 }

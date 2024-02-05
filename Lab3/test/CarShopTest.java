@@ -1,5 +1,5 @@
-package Lab2.test;
-
+package Lab3.test;
+import Lab3.main.java.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +31,7 @@ public class CarShopTest {
         CarShop<Car> testShop = new CarShop<>(2, 2, 4);
         testShop.load(volvo240);
         testShop.load(saab95);
-        assertEquals(2, testShop.loadable.nrOfLoadedCars());
+        assertEquals(2, testShop.nrOfLoadedCars());
     }
     @Test
     public void TestUnloadCarType(){
@@ -47,7 +47,7 @@ public class CarShopTest {
         CarShop<Volvo240> testShop = new CarShop<>(2, 2, 4);
         testShop.load(volvo240);
         //testShop.load(saab95);
-        assertEquals(1, testShop.loadable.nrOfLoadedCars());
+        assertEquals(1, testShop.nrOfLoadedCars());
     }
 
     }

@@ -1,4 +1,4 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 public class CarShop <T extends Car>{
 
@@ -16,5 +16,8 @@ public class CarShop <T extends Car>{
         return loadable.unload();
     }
 
+    public int nrOfLoadedCars() { //Needed to solve protected access in CarShopTest
+        return loadable.nrOfLoadedCars();
+    }
 
 }

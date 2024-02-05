@@ -1,8 +1,6 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class CarTransporter <T extends Car> extends Truck {
@@ -55,5 +53,9 @@ public class CarTransporter <T extends Car> extends Truck {
             car.setX(loadable.getX());
             car.setY(loadable.getY());
         }
+    }
+
+    public int nrOfLoadedCars() { //Needed to solve protected access in CarTransporterTest
+        return loadable.nrOfLoadedCars();
     }
 }

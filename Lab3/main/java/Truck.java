@@ -1,4 +1,4 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 import java.awt.*;
 
@@ -11,7 +11,7 @@ public abstract class Truck extends Car{
 
     }
     @Override
-    protected double speedFactor() {
+    public double speedFactor() { // Made public
         if (!this.attachment.attachmentInUse()) {
             return getEnginePower() * 0.01;
   }

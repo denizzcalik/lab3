@@ -1,4 +1,4 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 public class Flatbed implements Attachment {
     private int state;

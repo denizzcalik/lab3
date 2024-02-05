@@ -1,4 +1,4 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 public class TrimmedBehaviour {
     public final double trimFactor;

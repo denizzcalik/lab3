@@ -1,4 +1,4 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +52,7 @@ public class Loadable <T extends Car> implements Loading<T> {
             T car = loadedCars.removeLast();
             car.setX(this.getX() + 2); 
             car.setY(this.getY() + 2);
+            car.setDirection(0);
             return car;
         }
         throw new IllegalArgumentException("The car shop is empty");

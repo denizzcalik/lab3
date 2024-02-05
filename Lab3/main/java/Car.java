@@ -1,4 +1,4 @@
-package Lab2.main.java;
+package Lab3.main.java;
 
 import java.awt.*;
 public abstract class Car implements Movable {
