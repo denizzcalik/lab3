@@ -22,7 +22,7 @@ public class CarView extends JFrame{
     // The controller member
     CarController carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    DrawPanel drawPanel;
 
     JPanel controlPanel = new JPanel();
 
@@ -46,7 +46,9 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
+        this.drawPanel = new DrawPanel(X, Y-240, carC.cars);
         initComponents(framename);
+
     }
 
     // Sets everything in place and fits everything
@@ -58,8 +60,6 @@ public class CarView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
-
-
 
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
@@ -75,8 +75,6 @@ public class CarView extends JFrame{
 
             }
         });
-
-
         gasPanel.setLayout(new BorderLayout());
         gasPanel.add(gasLabel, BorderLayout.PAGE_START);
         gasPanel.add(gasSpinner, BorderLayout.PAGE_END);
@@ -100,7 +98,6 @@ public class CarView extends JFrame{
         startButton.setForeground(Color.green);
         startButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(startButton);
-
 
         stopButton.setBackground(Color.red);
         stopButton.setForeground(Color.black);

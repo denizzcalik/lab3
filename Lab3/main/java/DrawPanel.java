@@ -5,43 +5,42 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 // This panel represents the animated part of the view with the car images.
 
 public class DrawPanel extends JPanel{
 
+    HashMap<Car, BufferedImage> carAndImage;
+    ArrayList<Car> cars;
     // Just a single image, TODO: Generalize
-    BufferedImage volvoImage;
-    // To keep track of a single car's position
-    Point volvoPoint = new Point();
 
-    BufferedImage volvoWorkshopImage;
-    Point volvoWorkshopPoint = new Point(300,300);
-
-    // TODO: Make this general for all cars
-    void moveit(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-    }
 
     // Initializes the panel and reads the images
-    public DrawPanel(int x, int y) {
+    public DrawPanel(int x, int y, ArrayList<Car> cars) {
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
-        // Print an error message in case file is not found with a try/catch block
-        try {
-            // You can remove the "Lab2.pics" part if running outside of IntelliJ and
-            // everything is in the same main folder.
-            // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
+        this.carAndImage = new HashMap<Car, BufferedImage>();
+        this.cars = cars;
 
-            // Rememember to rightclick src New -> Package -> name: Lab2.pics -> MOVE *.jpg to Lab2.pics.
-            // if you are starting in IntelliJ.
-            volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("../pics/Volvo240.jpg"));
-            volvoWorkshopImage = ImageIO.read(DrawPanel.class.getResourceAsStream("../pics/VolvoBrand.jpg"));
-        } catch (IOException ex)
-        {
-            ex.printStackTrace();
+        // Print an error message in case file is not found with a try/catch block
+        for (Car car: cars) {
+            try {
+
+                // You can remove the "Lab2.pics" part if running outside of IntelliJ and
+                // everything is in the same main folder.
+                // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
+
+                // Rememember to rightclick src New -> Package -> name: Lab2.pics -> MOVE *.jpg to Lab2.pics.
+                // if you are starting in IntelliJ.
+                carAndImage.put(car, ImageIO.read(DrawPanel.class.getResourceAsStream(
+                        "../pics/" + car.getModelName() + ".jpg")));
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
 
     }
@@ -51,7 +50,11 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
-        g.drawImage(volvoWorkshopImage, volvoWorkshopPoint.x, volvoWorkshopPoint.y, null);
+            for (Car car : cars) {
+                int x = (int) car.getX();
+                int y = (int) car.getY();
+                g.drawImage(carAndImage.get(car), x, y, null); // see javadoc for more info on the parameters
+
+            }
     }
 }
