@@ -16,6 +16,10 @@ public class DrawPanel extends JPanel{
     ArrayList<Car> cars;
     // Just a single image, TODO: Generalize
 
+    CarShop<Volvo240> VolvoWorkshop;
+
+    BufferedImage VolvoImage;
+
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y, ArrayList<Car> cars) {
@@ -24,6 +28,7 @@ public class DrawPanel extends JPanel{
         this.setBackground(Color.green);
         this.carAndImage = new HashMap<Car, BufferedImage>();
         this.cars = cars;
+        this.VolvoWorkshop = new CarShop<>(1, 100, 100);
 
         // Print an error message in case file is not found with a try/catch block
         for (Car car: cars) {
@@ -41,8 +46,17 @@ public class DrawPanel extends JPanel{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        }
 
+
+        }
+        try {
+            VolvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream(
+                    "../pics/VolvoBrand.jpg"));
+
+        } catch (IOException ex) {
+            ex. printStackTrace();
+
+        }
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -56,5 +70,7 @@ public class DrawPanel extends JPanel{
                 g.drawImage(carAndImage.get(car), x, y, null); // see javadoc for more info on the parameters
 
             }
+        g.drawImage(VolvoImage, 300, 300, null);
+
     }
 }

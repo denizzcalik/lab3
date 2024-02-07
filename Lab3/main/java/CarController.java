@@ -34,6 +34,7 @@ public class CarController {
         //
         cc.cars.add(new Volvo240(Color.blue, 12, 5));
         cc.cars.add(new Saab95(Color.blue, 12, 105));
+        cc.cars.add(new Scania(Color.blue, 12, 205));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
