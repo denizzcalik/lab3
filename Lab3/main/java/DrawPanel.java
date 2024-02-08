@@ -28,7 +28,7 @@ public class DrawPanel extends JPanel{
         this.setBackground(Color.green);
         this.carAndImage = new HashMap<Car, BufferedImage>();
         this.cars = cars;
-        this.VolvoWorkshop = new CarShop<>(1, 100, 100);
+        this.VolvoWorkshop = new CarShop<>(1, 300, 300);
 
         // Print an error message in case file is not found with a try/catch block
         for (Car car: cars) {
@@ -46,7 +46,6 @@ public class DrawPanel extends JPanel{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-
 
         }
         try {

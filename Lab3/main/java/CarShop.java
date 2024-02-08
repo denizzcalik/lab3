@@ -19,5 +19,11 @@ public class CarShop <T extends Car>{
     public int nrOfLoadedCars() { //Needed to solve protected access in CarShopTest
         return loadable.nrOfLoadedCars();
     }
+    public double getX() {
+        return loadable.getX();
+    }
+    public double getY() {
+        return loadable.getY();
+    }
 
 }

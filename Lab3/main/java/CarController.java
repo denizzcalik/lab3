@@ -63,6 +63,8 @@ public class CarController {
                     car.turnLeft();
                 }
 
+                VolvoCarShopCollision();
+
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -70,7 +72,7 @@ public class CarController {
     }
 
     // Calls the gas method for each car once
-    void gas(int amount) {
+    protected void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : cars
         ) {
@@ -78,7 +80,7 @@ public class CarController {
         }
     }
 
-    void brake(int amount) {
+    protected void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Car car : cars
         ) {
