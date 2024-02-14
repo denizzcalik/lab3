@@ -138,9 +138,7 @@ public class CarController {
                     frame.drawPanel.VolvoWorkshop.load((Volvo240)car);
                     car.stopEngine();
                 }
-                else {
-                    car.turnLeft();
-                }
+
 
         }
     }
